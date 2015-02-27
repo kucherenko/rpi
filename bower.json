@@ -1,0 +1,21 @@
+{
+	"name": "rpi",
+	"main": "index.js",
+	"version": "1.0.0",
+	"homepage": "https://github.com/kucherenko/rpi",
+	"authors": [
+		"Andrey Kucherenko <kucherenko.andrey@gmail.com>"
+	],
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"socket.io-client": "*",
+		"smoothie": "*"
+	}
+}
