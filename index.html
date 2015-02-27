@@ -4,12 +4,8 @@
     <script type="text/javascript" src="bower_components/smoothie/smoothie.js"></script>
     <script type="text/javascript" src="bower_components/socket.io-client/socket.io.js"></script>
     <script type="text/javascript">
-      // Randomly add a data point every 500ms
       var temp = new TimeSeries();
       var hum = new TimeSeries();
-      // setInterval(function() {
-      //   random.append(new Date().getTime(), Math.random() * 10000);
-      // }, 500);
 
       var socket = io.connect('http://localhost:8081');
       socket.on('data.update', function (data) {
@@ -34,7 +30,7 @@
   <body onload="createTimeline()" style="background-color:#333333">
 
     <canvas id="chart" width="800" height="700"></canvas>
-    <div class="">
+    <div>
       <button style="width:800px;height:50px;font-size:140%" onclick="startServo()">Пыщ! Пыщ!</button>
     </div>
   </body>
