@@ -2,23 +2,40 @@
 <html>
   <head>
     <script type="text/javascript" src="bower_components/smoothie/smoothie.js"></script>
+    <script type="text/javascript" src="bower_components/socket.io-client/socket.io.js"></script>
     <script type="text/javascript">
       // Randomly add a data point every 500ms
-      var random = new TimeSeries();
-      setInterval(function() {
-        random.append(new Date().getTime(), Math.random() * 10000);
-      }, 500);
+      var temp = new TimeSeries();
+      var hum = new TimeSeries();
+      // setInterval(function() {
+      //   random.append(new Date().getTime(), Math.random() * 10000);
+      // }, 500);
+
+      var socket = io.connect('http://localhost:8081');
+      socket.on('data.update', function (data) {
+        console.log(data);
+        temp.append(new Date().getTime(), data.temp);
+        hum.append(new Date().getTime(), data.hum);
+      });
 
       function createTimeline() {
         var chart = new SmoothieChart();
-        chart.addTimeSeries(random, { strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 4 });
-        chart.streamTo(document.getElementById("chart"), 500);
+        // chart.addTimeSeries(random, { strokeStyle: 'rgba(0, 255, 0, 0.4)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 4 });
+        chart.addTimeSeries(hum, { strokeStyle: 'rgba(0, 0, 255, 1)', fillStyle: 'rgba(0, 0, 255, 0.2)', lineWidth: 4 });
+        chart.addTimeSeries(temp, { strokeStyle: 'rgba(255, 0, 0, 1)', fillStyle: 'rgba(255, 0, 0, 0.2)', lineWidth: 4 });
+        chart.streamTo(document.getElementById("chart"), 1000);
+      }
+
+      function startServo() {
+        socket.emit('start.servo');
       }
     </script>
   </head>
   <body onload="createTimeline()" style="background-color:#333333">
 
-    <canvas id="chart" width="100" height="100"></canvas>
-
+    <canvas id="chart" width="800" height="700"></canvas>
+    <div class="">
+      <button style="width:800px;height:50px;font-size:140%" onclick="startServo()">Пыщ! Пыщ!</button>
+    </div>
   </body>
 </html>
