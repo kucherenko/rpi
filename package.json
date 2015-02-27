@@ -15,6 +15,7 @@
     "raspi-io": "*",
     "node-dht-sensor": "*",
     "express": "*",
+    "serve-static": "*",
     "socket.io": "*"
   },
   "author": "",
