@@ -5206,30 +5206,29 @@
                 </div>
                 <div class="sl-block" data-block-type="code" data-block-id="1ba759f8cc1981287959e98ab2d44fb4"
                      style="min-width: 30px; min-height: 30px; width: 472px; height: 622px; left: 480px; top: 39px;">
-                    <div class="sl-block-content" style="z-index: 13;"><pre><code>
+<div class="sl-block-content" style="z-index: 13;"><pre><code>
 
-                        var five = require("johnny-five");
-                        var myBoard, myLed;
+var five = require("johnny-five");
+var myBoard, myLed;
 
-                        myBoard = new five.Board();
+myBoard = new five.Board();
 
-                        myBoard.on("ready", function() {
+myBoard.on("ready", function() {
 
-                        myLed = new five.Led(13);
+myLed = new five.Led(13);
 
-                        myLed.strobe( 1000 );
+myLed.strobe( 1000 );
 
-                        // make myLED available as "led" in REPL
+// make myLED available as "led" in REPL
+this.repl.inject({
+    led: myLed
+});
 
-                        this.repl.inject({
-                        led: myLed
-                        });
-
-                        /**
-                        * try "on", "off", "toggle",
-                        * "strobe", "stop" (stops strobing)
-                        */
-                        });</code></pre>
+/**
+* try "on", "off", "toggle",
+* "strobe", "stop" (stops strobing)
+*/
+});</code></pre>
                     </div>
                 </div>
                 <div class="sl-block" data-block-type="image" data-block-id="92083fabf7b1e54c7c148b766312d554"
@@ -5252,25 +5251,25 @@
                 <div class="sl-block" data-block-type="code"
                      style="width: 472px; height: 622px; left: 480px; top: 39px;"
                      data-block-id="2f08783c59aec2748007aa01189ef4a1">
-                    <div class="sl-block-content" style="z-index: 13;"><pre><code>
-                        var Cylon = require('cylon');
+<div class="sl-block-content" style="z-index: 13;"><pre><code>
+var Cylon = require('cylon');
 
-                        Cylon.robot({
-                        connections: {
-                        arduino: {
-                        adaptor: 'firmata',
-                        port: '/dev/ttyACM0'
-                        }
-                        },
+Cylon.robot({
+    connections: {
+    arduino: {
+        adaptor: 'firmata',
+            port: '/dev/ttyACM0'
+        }
+    },
 
-                        devices: {
-                        led: { driver: 'led', pin: 13 }
-                        },
+    devices: {
+        led: { driver: 'led', pin: 13 }
+    },
 
-                        work: function(my) {
-                        every((1).second(), my.led.toggle);
-                        }
-                        }).start();</code></pre>
+    work: function(my) {
+        every((1).second(), my.led.toggle);
+    }
+}).start();</code></pre>
                     </div>
                 </div>
                 <div class="sl-block" data-block-type="image"
@@ -5414,32 +5413,31 @@
                 <div class="sl-block" data-block-type="code"
                      style="min-width: 30px; min-height: 30px; width: 472px; height: 622px; left: 480px; top: 39px;"
                      data-block-id="a59c5601b0fe6412a3e672b77c21e644">
-                    <div class="sl-block-content" style="z-index: 12;"><pre><code>
+<div class="sl-block-content" style="z-index: 12;"><pre><code>
 
-                        var five = require("johnny-five");
-                        var raspi = require('raspi-io');
+var five = require("johnny-five");
+var raspi = require('raspi-io');
 
-                        var myBoard, myLed;
+var myBoard, myLed;
 
-                        myBoard = new five.Board({io: new raspi()});
+myBoard = new five.Board({io: new raspi()});
 
-                        myBoard.on("ready", function() {
+myBoard.on("ready", function() {
 
-                        myLed = new five.Led(13);
+myLed = new five.Led(13);
 
-                        myLed.strobe( 1000 );
+myLed.strobe( 1000 );
 
-                        // make myLED available as "led" in REPL
+// make myLED available as "led" in REPL
+this.repl.inject({
+    led: myLed
+});
 
-                        this.repl.inject({
-                        led: myLed
-                        });
-
-                        /**
-                        * try "on", "off", "toggle",
-                        * "strobe", "stop" (stops strobing)
-                        */
-                        });</code></pre>
+/**
+* try "on", "off", "toggle",
+* "strobe", "stop" (stops strobing)
+*/
+});</code></pre>
                     </div>
                 </div>
                 <div class="sl-block" data-block-type="image"
@@ -5463,24 +5461,24 @@
                 <div class="sl-block" data-block-type="code"
                      style="width: 472px; height: 622px; left: 480px; top: 39px;"
                      data-block-id="50f00f31451928f61f8c2977e13ddfed">
-                    <div class="sl-block-content" style="z-index: 12;"><pre><code>
-                        var Cylon = require('cylon');
+<div class="sl-block-content" style="z-index: 12;"><pre><code>
+var Cylon = require('cylon');
 
-                        Cylon.robot({
-                        connections: {
-                        arduino: {
-                        adaptor: 'raspi'
-                        }
-                        },
+Cylon.robot({
+    connections: {
+        arduino: {
+            adaptor: 'raspi'
+        }
+    },
 
-                        devices: {
-                        led: { driver: 'led', pin: 13 }
-                        },
+    devices: {
+        led: { driver: 'led', pin: 13 }
+    },
 
-                        work: function(my) {
-                        every((1).second(), my.led.toggle);
-                        }
-                        }).start();</code></pre>
+    work: function(my) {
+        every((1).second(), my.led.toggle);
+    }
+}).start();</code></pre>
                     </div>
                 </div>
                 <div class="sl-block" data-block-type="image"
@@ -5522,19 +5520,22 @@
                 <div class="sl-block" data-block-type="code"
                      style="width: 872px; height: 497px; left: 44px; top: 158px;"
                      data-block-id="6d83823716ab49042e6ced51a60d2c58">
-                    <div class="sl-block-content" style="z-index: 12;"><pre><code>var arDrone = require('ar-drone');
-                        var client = arDrone.createClient();
+                    <div class="sl-block-content" style="z-index: 12;">
+<pre><code>
+var arDrone = require('ar-drone');
+var client = arDrone.createClient();
 
-                        client.takeoff();
+client.takeoff();
 
-                        client
-                        .after(5000, function() {
-                        this.clockwise(0.5);
-                        })
-                        .after(3000, function() {
-                        this.stop();
-                        this.land();
-                        });</code></pre>
+client
+    .after(5000, function() {
+        this.clockwise(0.5);
+    })
+    .after(3000, function() {
+        this.stop();
+        this.land();
+});
+</code></pre>
                     </div>
                 </div>
             </section>
@@ -5549,23 +5550,26 @@
                 <div class="sl-block" data-block-type="code"
                      style="width: 872px; height: 497px; left: 44px; top: 158px;"
                      data-block-id="35e38f472ea0f57dd15379fd0f90394e">
-                    <div class="sl-block-content" style="z-index: 12;"><pre><code>var arDrone = require('ar-drone');
-                        var client = arDrone.createClient();
-                        client.createRepl();
+                    <div class="sl-block-content" style="z-index: 12;">
+<pre><code>
+var arDrone = require('ar-drone');
+var client = arDrone.createClient();
+client.createRepl();
 
 
-                        $ node repl.js
-                        // Make the drone takeoff
-                        drone&gt; takeoff()
-                        true
-                        // Wait for the drone to takeoff
-                        drone&gt; clockwise(0.5)
-                        0.5
-                        // Let the drone spin for a while
-                        drone&gt; land()
-                        true
-                        // Wait for the drone to land</code></pre>
-                    </div>
+$ node repl.js
+// Make the drone takeoff
+drone&gt; takeoff()
+true
+// Wait for the drone to takeoff
+drone&gt; clockwise(0.5)
+0.5
+// Let the drone spin for a while
+drone&gt; land()
+true
+// Wait for the drone to land
+</code></pre>
+</div>
                 </div>
             </section>
         </section>
