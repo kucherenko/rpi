@@ -16,7 +16,7 @@ var board = new five.Board({
 });
 
 board.on('ready', function() {
-  var servo = new five.Servo('P1-12');
+  servo = new five.Servo('P1-12');
   servo.to(10);
 });
 
