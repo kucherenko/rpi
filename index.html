@@ -15,7 +15,11 @@
       });
 
       function createTimeline() {
-        var chart = new SmoothieChart();
+          var chart = new SmoothieChart({
+              maxValue:100,
+              minValue:0,
+              horizontalLines:[{color:'#ffffff',lineWidth:1,value:50}]
+          });
         // chart.addTimeSeries(random, { strokeStyle: 'rgba(0, 255, 0, 0.4)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 4 });
         chart.addTimeSeries(hum, { strokeStyle: 'rgba(0, 0, 255, 1)', fillStyle: 'rgba(0, 0, 255, 0.2)', lineWidth: 4 });
         chart.addTimeSeries(temp, { strokeStyle: 'rgba(255, 0, 0, 1)', fillStyle: 'rgba(255, 0, 0, 0.2)', lineWidth: 4 });

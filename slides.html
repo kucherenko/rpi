@@ -4906,7 +4906,11 @@
         });
 
         function createTimeline() {
-            var chart = new SmoothieChart();
+            var chart = new SmoothieChart({
+                maxValue:100,
+                minValue:0,
+                horizontalLines:[{color:'#ffffff',lineWidth:1,value:50}]
+            });
             // chart.addTimeSeries(random, { strokeStyle: 'rgba(0, 255, 0, 0.4)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 4 });
             chart.addTimeSeries(hum, {
                 strokeStyle: 'rgba(0, 0, 255, 1)',
@@ -5586,7 +5590,7 @@ true
             </section>
             <section>
                 <div class="sl-block-content" style="z-index: 11;">
-                    <canvas id="chart" width="977" height="720"></canvas>
+                    <canvas id="chart" width="977" height="500"></canvas>
                     <div>
                         <button style="background-color:#cfcfcf;width:800px;height:50px;font-size:140%" onclick="startServo()">Пыщ! Пыщ!</button>
                         <a href="https://github.com/kucherenko/rpi">https://github.com/kucherenko/rpi</a>
