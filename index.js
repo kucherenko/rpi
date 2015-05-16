@@ -23,7 +23,8 @@ board.on('ready', function() {
 app.use(serveStatic(__dirname, {
   'index': ['index.html'],
   'extensions': ['html', 'js']
-}))
+}));
+
 server.listen(8081);
 
 io.on('connection', function(socket) {
